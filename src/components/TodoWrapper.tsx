@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { TodoForm } from "./TodoForm";
 import { Todo } from "./Todo";
@@ -6,7 +6,14 @@ import type { TodoType } from "../types/TodoType";
 import { EditTodoForm } from "./EditTodoForm";
 
 export const TodoWrapper = () => {
-  const [todos, setTodos] = useState<TodoType[]>([]);
+  const [todos, setTodos] = useState<TodoType[]>(() => {
+    const localData = localStorage.getItem("todos");
+    return localData ? JSON.parse(localData) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
   const addTodo = (todo: string) => {
     setTodos([
