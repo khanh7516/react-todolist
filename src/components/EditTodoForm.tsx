@@ -3,11 +3,12 @@ import type { TodoType } from "../types/TodoType";
 
 interface EditTodoFormProps {
   updateTodo: (value: string, todoId: string) => void
+  cancelEdit: (id: string) => void;
   todo: TodoType
 }
 
 
-export const EditTodoForm = ({ updateTodo, todo}: EditTodoFormProps) => {
+export const EditTodoForm = ({ updateTodo, cancelEdit, todo}: EditTodoFormProps) => {
   const [value, setValue] = useState("");
 
   const handleSubmit: (e: React.FormEvent) => void = (e) => {
@@ -22,6 +23,7 @@ export const EditTodoForm = ({ updateTodo, todo}: EditTodoFormProps) => {
       value={value}
       onChange={(e) => setValue(e.target.value)}/>
       <button type="submit">Update</button>
+      <button type="button" onClick={() => cancelEdit(todo.id)}>Cancel</button>
     </form>
   )
 }

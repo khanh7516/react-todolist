@@ -54,6 +54,11 @@ export const TodoWrapper = () => {
     ));
   }
 
+  const cancelEdit = (id: string) => {
+    setTodos(todos.map(todo =>
+        todo.id === id ? { ...todo, isEditing: false } : todo
+    ));
+  };
 
   return (
     <div className="todo-wrapper">
@@ -65,6 +70,7 @@ export const TodoWrapper = () => {
             key={todo.id}
             todo={todo}
             updateTodo={updateTodo}
+            cancelEdit={cancelEdit}
             />
         ) : (
             <Todo
