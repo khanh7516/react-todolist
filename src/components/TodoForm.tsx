@@ -8,9 +8,15 @@ interface TodoFormProps {
 export const TodoForm = ({addTodo}: TodoFormProps) => {
   const [value, setValue] = useState("");
 
-  const handleSubmit: (e: React.FormEvent) => void = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    addTodo(value);
+    
+    if (value.trim() === "") {
+      alert("Task cannot be empty!");
+      return;
+    }
+
+    addTodo(value.trim());
     setValue("");
   };
 
