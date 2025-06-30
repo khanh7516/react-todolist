@@ -1,5 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Relief:wght@400;700&family=Dosis:wght@200..800&display=swap');
+* {
+  font-family: 'Comic Relief', sans-serif;
+  font-size: 1.2rem;
+}
+
 #root {
-  max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -7,7 +12,7 @@
 
 .todo-wrapper {
   width: 100%;
-  max-width: 400px;
+  max-width: 600px;
   margin: 40px auto;
   padding: 20px;
   border: 1px solid black;
